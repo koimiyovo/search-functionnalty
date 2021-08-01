@@ -26,5 +26,7 @@ class CityFinder(private val cities: List<String>)
 
 class SearchCriteria(private val cities: List<String>, private val searchText: String)
 {
-    fun areMet() = cities.isNotEmpty() && (searchText == CityFinder.ALL_CITIES_FILTER || searchText.length >= 3)
+    fun areMet() = cities.isNotEmpty() && searchText.isValid()
+
+    private fun String.isValid() = this == CityFinder.ALL_CITIES_FILTER || this.length >= 3
 }
